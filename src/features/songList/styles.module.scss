@@ -1,0 +1,16 @@
+.songTable {
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid;
+    margin: auto;
+
+    th {
+        background-color: whitesmoke;
+    }
+
+    th,
+    td {
+        border: 1px solid;
+        width: 100px;
+    }
+
+}

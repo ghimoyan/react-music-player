@@ -1,9 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { MusicReducer } from '../features/music/MusicSlice';
+import { MusicUploadFormReducer } from '../features';
+
 
 export const store = configureStore({
   reducer: {
-    music: MusicReducer
+    music: MusicUploadFormReducer
   },
 });
 

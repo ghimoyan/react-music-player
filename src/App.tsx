@@ -1,9 +1,11 @@
 import './App.css';
-import SongList from './features/music/SongList';
+import { MusicUploadForm, SongList } from './features';
+
 
 function App() {
   return (
     <div className="App">
+      <MusicUploadForm />
       <SongList />
     </div>
   );
