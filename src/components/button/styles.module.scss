@@ -7,18 +7,18 @@
     line-height: 24px;
     border: none;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: 0.3s;
     font-size: 14px;
     font-weight: 500;
     font-style: normal;
 }
 
 .primary {
-    color: white;
-    background-color: gray;
+    color: black;
+    background-color: whitesmoke;
 
     &:hover {
-        background-color: black;
+        background-color: gray;
     }
 }
 
@@ -33,20 +33,7 @@
 }
 
 .secondary {
-    color: gray;
-    background-color: green;
-
-    &:hover {
-        background-color: red;
-    }
-
-    &:focus {
-        background-color: black;
-    }
-
-    &:disabled {
-        cursor: not-allowed;
-        background-color: orange;
-        color: whitesmoke;
-    }
+    border: .5px solid black;
+    color: black;
+    background-color: #f0f0f0;
 }

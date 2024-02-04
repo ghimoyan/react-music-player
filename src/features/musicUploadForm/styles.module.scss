@@ -3,10 +3,29 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    margin-top: 20px;
 
-    .label {
+    label {
         display: flex;
         flex-direction: column;
         gap: 10px;
+
+        input[type="file"]::file-selector-button {
+            border-radius: 4px;
+            padding: 0 16px;
+            height: 40px;
+            cursor: pointer;
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.16);
+            box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+            transition: background-color 200ms;
+        }
+
+        input {
+            border: none;
+            background-color: whitesmoke;
+            border-radius: 5px;
+            height: 40px;
+        }
     }
 }

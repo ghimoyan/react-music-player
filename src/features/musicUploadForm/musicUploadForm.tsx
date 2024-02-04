@@ -1,4 +1,4 @@
-import { ChangeEvent, SyntheticEvent } from 'react'
+import { ChangeEvent, SyntheticEvent, useState } from 'react'
 
 import { Button, Input, Table } from "../../components"
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
@@ -7,22 +7,15 @@ import { addSong } from './musicUploadFormSlice'
 
 export const MusicUploadForm = () => {
     const dispatch = useAppDispatch()
-    // const initialFormData = useAppSelector((state) => state.musicUploadForm.songName);
+
+    const [fileName, setFileName] = useState<string | null>(null);
 
     const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.files)
-    }
-    // const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
-    //     const file = e.target.files?.[0];
-
-    //     if (file) {
-    //         // Handle the file (e.g., upload it) separately
-    //         // ...
-
-    //         // Dispatch the action with file information
-    //         dispatch(addSong({ ...initialFormData, fileName: file.name }));
-    //     }
-    // };
+        const file = e.target.files?.[0];
+        if (file) {
+            setFileName(file.name);
+        }
+    };
 
     const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -31,30 +24,31 @@ export const MusicUploadForm = () => {
             songName: String(data.get('songName')),
             artistName: String(data.get('artistName')),
             trackNumber: String(data.get('trackName')),
-            file: String(data.get('file'))
+            file: fileName || '',
         };
         dispatch(addSong(songData));
     }
+
     return (
         <form
             className={styles.form}
             onSubmit={handleSubmit}
         >
-            <label className={styles.label}>
+            <label>
                 Song Name
                 <Input
                     required
                     name='songName'
                 />
             </label>
-            <label className={styles.label}>
+            <label>
                 Artist Name
                 <Input
                     required
                     name='artistName'
                 />
             </label>
-            <label className={styles.label}>
+            <label>
                 Track Number
                 <Input
                     type='number'
@@ -62,12 +56,12 @@ export const MusicUploadForm = () => {
                     name='trackName'
                 />
             </label>
-            <label className={styles.label}>
+            <label>
                 File Upload
-                <Input type="file"
+                <Input
+                    type="file"
                     required
                     name='file'
-                    // accept=".mp3,.wav"
                     onChange={handleFileUpload}
                     multiple={false}
                 />

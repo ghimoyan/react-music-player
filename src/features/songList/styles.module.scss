@@ -1,5 +1,4 @@
 .songTable {
-    font-family: 'Courier New', Courier, monospace;
     border: 1px solid;
     margin: auto;
 
@@ -10,7 +9,26 @@
     th,
     td {
         border: 1px solid;
-        width: 100px;
+        width: 180px;
     }
+}
 
+.upSongList {
+    border: .5px solid;
+    border-radius: 4px;
+    width: 900px;
+    height: 32px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    background-color: #e8e8e8;
+    padding: 4px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+
+    .FilterInput {
+        border-radius: 18px;
+        border: .5px solid black;
+    }
 }

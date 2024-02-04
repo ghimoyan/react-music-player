@@ -22,7 +22,6 @@ export const MusicUploadFormSlice = createSlice({
     initialState,
     reducers: {
         addSong: (state: SongData, action: PayloadAction<Song>) => {
-            console.log(action.payload)
             state.data = [action.payload, ...state.data]
         },
     }

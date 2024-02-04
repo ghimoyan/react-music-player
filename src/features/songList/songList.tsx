@@ -1,17 +1,21 @@
-import React, { useEffect } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import styles from "./styles.module.scss"
-import { MusicUploadForm } from '../musicUploadForm';
 import { Song } from '../musicUploadForm/musicUploadFormSlice';
+import { Button, Input } from '../../components';
+import { ButtonVariant } from '../../components/button/constants';
 
 
 export const SongList = () => {
     const songs: Song[] = useAppSelector((state) => state.music.data);
-    console.log(songs, 'songs')
 
     return (
         <div>
-            <h2>Song List</h2>
+            <div className={styles.upSongList}>
+                <Button onClick={() => (console.log("Play All"))} variant={ButtonVariant.Secondary}>Play All</Button>
+                <Button onClick={() => (console.log("Add All"))} variant={ButtonVariant.Secondary}>Add All</Button>
+                <Button onClick={() => (console.log("Track Number"))} variant={ButtonVariant.Secondary}>Track Number</Button>
+                <Input className={styles.FilterInput} placeholder='Filter' />
+            </div>
             <table className={styles.songTable}>
                 <thead>
                     <tr>
@@ -22,19 +26,19 @@ export const SongList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {songs?.map((song: Song, index: number) => (
-                        <tr key={`${index}-${song.songName}`}>
-                            <td>{song.file}</td>
-                            <td>{song.songName}</td>
-                            <td>{song.artistName} </td>
-                            <td>{song.trackNumber}</td>
-                        </tr>
-                    ))}
-
+                    {songs?.map((song: Song, index: number) => {
+                        return (
+                            <tr key={`${index}-${song.songName}`}>
+                                <td>{song.file}</td>
+                                <td>{song.songName}</td>
+                                <td>{song.artistName}</td>
+                                <td>{song.trackNumber}</td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </table>
 
         </div>
     );
 };
-
